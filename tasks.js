@@ -5,6 +5,7 @@ const task1 = (num, char) => {
     ){
         return "ERROR: Not a number and/or not a char";
     }
+    // Fill an array with num positions and char values
     return Array(num).fill(char);
 }
 
@@ -67,17 +68,39 @@ const task7 = (arr1, arr2) => {
 
 const task8 = (arr) => {
   if(!arr || !Array.isArray(arr)) return "ERROR: Invalid Array!";
+  // [1, 2, [3], [4, 5]]
 
-  return arr.map(elem => {
-    if(elem.length) {
-      const array = [];
-      x = 15;
-
-
-    }
-  })
+  // Recursive function where it will check if it is an array and if it is,
+  // call it the self function to perform the same in the newest element
+  return arr.reduce((acc, cv) => {
+    //console.log(cv)
+    return acc.concat(!cv.length ? cv : task8(cv))
+  }, []);
 }
 
+const task9 = (arr, num) => {
+  if(!arr || !Array.isArray(arr) || !num || typeof num !== 'number' ) return "ERROR: Invalid arguments!";
+
+  // It loops through all the positions and try to find the remainder of the
+  // current index + 1 to get a mathematical scale, if the remainder is 0
+  // then it deletes everything inside the auxiliar array and push the values
+  // to the accumulator
+  let auxArr = [];
+  return arr.reduce((acc, cv, index) => {
+    auxArr.push(cv);
+    if((index + 1) % num === 0 || (index + 1) === arr.length) {
+      acc.push(auxArr);
+      auxArr = [];
+    }
+    return acc;
+  }, [])
+}
+
+const task10 = (arr1, arr2) => {
+  // It will filter and check if the current value is inside the second array
+  // with includes. If it is, then return the value to the array.
+  return arr1.filter(val => arr2.includes(val))
+}
 
 module.exports = {
   task1,
@@ -87,5 +110,8 @@ module.exports = {
   task5,
   task6,
   task7,
+  task8,
+  task9,
+  task10
 }
 
