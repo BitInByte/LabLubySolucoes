@@ -25,3 +25,5 @@ reactgithub/yarn-error.log*
 reactgithub/.idea
 .idea
 reactgithub/package-lock.json
+
+reactgithub/*.env

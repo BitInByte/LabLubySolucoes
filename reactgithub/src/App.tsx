@@ -1,24 +1,24 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
 import Layout from "./hoc/Layout";
 import Login from "./pages/Login";
 //import './App.css';
 
 const AppWrapper = styled.div`
-    width: 100rem;
+  max-width: 100rem;
   //background-color: white;
   margin: 0 auto;
-  min-height: 100rem;
+  height: 100%;
 `;
 
 const App = () => {
   return (
-      <AppWrapper>
-          {/*<Layout>*/}
-        <Login />
-          {/*</Layout>*/}
-      </AppWrapper>
+    <AppWrapper>
+      {/*<Layout>*/}
+      <Login />
+      {/*</Layout>*/}
+    </AppWrapper>
   );
-}
+};
 
 export default App;

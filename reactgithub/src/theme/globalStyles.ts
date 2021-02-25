@@ -32,6 +32,9 @@ const globalStyle = createGlobalStyle`
   }
 
 //  ====== UNIVERSAL PROPERTIES ======
+  html, body {
+    height: 100%;
+  }
   html {
     font-size: 62.5%; // 1rem = 10px; 10px/16px = 62.5%
     background-color: #2A2A2A;
@@ -69,7 +72,10 @@ const globalStyle = createGlobalStyle`
     //display: flex;
     //justify-content: center;
   }
-`;
 
+  #root {
+    height: 100%;
+  }
+`;
 
 export default globalStyle;

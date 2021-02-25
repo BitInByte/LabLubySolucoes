@@ -1,25 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter } from "react-router-dom";
-//import './index.css';
-import App from './App';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import reportWebVitals from './reportWebVitals';
+import { Provider } from "react-redux";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+import reportWebVitals from "./reportWebVitals";
 
 import GlobalStyle from "./theme/globalStyles";
 import theme from "./theme";
 
+import App from "./App";
+
+import store from "./store";
+
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ThemeProvider theme={theme}>
+    <Provider store={store}>
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
           <GlobalStyle />
-        <App />
-      </ThemeProvider>
-    </BrowserRouter>
+          <App />
+        </ThemeProvider>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
-  document.getElementById('root'));
+  document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
