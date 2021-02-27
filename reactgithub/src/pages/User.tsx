@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import User from "../components/User";
 import Spinner from "../components/UI/Spinner";
 
-import actionTypes from "../store/actions/actionTypes";
 import { getUserByUsername } from "../store/actions/userActions";
 import { addLocalStorageUserInformation } from "../utils/localStorage";
 // Styles

@@ -1,5 +1,4 @@
 import { AppThunk } from "../types/thunk";
-import axios from "axios";
 import actionTypes from "./actionTypes";
 import {
   followStartAction,

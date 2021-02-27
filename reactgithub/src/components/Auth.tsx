@@ -5,15 +5,12 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getUserByUsername } from "../store/actions/userActions";
-
-import User from "../models/User";
+import actionTypes from "../store/actions/actionTypes";
 
 // Import components
 import Input from "./UI/Input";
 import Button from "./UI/Button";
 import Spinner from "./UI/Spinner";
-import actionTypes from "../store/actions/actionTypes";
-import { addLocalStorageUserInformation } from "../utils/localStorage";
 
 // Styles
 const Form = styled.form`
@@ -23,13 +20,13 @@ const Form = styled.form`
   flex-direction: column;
 `;
 
-const SpinnerElement = styled(Spinner)`
-  && {
-    width: 10rem !important;
-    height: 10rem;
-    color: ${(props) => props.theme.colors.yellow};
-  }
-`;
+//const SpinnerElement = styled(Spinner)`
+//&& {
+//width: 10rem !important;
+//height: 10rem;
+//color: ${(props) => props.theme.colors.yellow};
+//}
+//`;
 
 // Interface
 interface IProps {}

@@ -13,9 +13,6 @@ const RowElement = styled.li`
   display: flex;
   align-items: center;
   justify-content: center;
-  &:not(:last-child) {
-    border-bottom: solid 0.05rem #434343;
-  }
 
   & p {
     margin-left: 3rem;
@@ -64,7 +61,7 @@ const FollowRow: React.FC<IProps> = ({ avatarUrl, username }) => {
   return (
     <RowElement>
       <AvatarElement>
-        <img src={avatarUrl} />
+        <img src={avatarUrl} alt="User Avatar" />
       </AvatarElement>
       <p>#{username}</p>
       <GoIcon />

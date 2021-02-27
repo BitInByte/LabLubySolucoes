@@ -135,7 +135,7 @@ const HeaderPage: React.FC<IProps> = ({
       </RowElement>
       {avatarUrl && (
         <AvatarElement>
-          <img src={avatarUrl} />
+          <img src={avatarUrl} alt="User Avatar" />
         </AvatarElement>
       )}
     </HeaderPageElement>
