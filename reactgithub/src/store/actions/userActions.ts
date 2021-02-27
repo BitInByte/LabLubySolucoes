@@ -6,7 +6,7 @@ import {
   userErrorAction,
 } from "./types/userActionTypes";
 
-import User from "../../models/User";
+import User, { getUserByUsernameBodyPromise } from "../../models/User";
 
 const authStart = (): userStartAction => {
   return {
@@ -14,7 +14,7 @@ const authStart = (): userStartAction => {
   };
 };
 
-const authSuccess = (user: User): userSuccessAction => {
+const authSuccess = (user: getUserByUsernameBodyPromise): userSuccessAction => {
   return {
     type: userTypes.USER_SUCCESS,
     payload: user,
@@ -46,9 +46,13 @@ export const getUserByUsername = ({
       );
     }
     addLocalStorageUserInformation(username);
-    dispatch(authSuccess(newUser));
+    dispatch(authSuccess(newUser.getData()));
   };
 };
+
+//export const logout = () => {
+//localStorage.removeItem("username");
+//}
 
 const addLocalStorageUserInformation = (username: string) => {
   localStorage.setItem("username", username);

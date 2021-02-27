@@ -1,5 +1,5 @@
 import { userTypes } from "../actionTypes";
-import User from "../../../models/User";
+import User, { getUserByUsernameBodyPromise } from "../../../models/User";
 
 export type userStartAction = {
   type: userTypes.USER_START;
@@ -7,7 +7,8 @@ export type userStartAction = {
 
 export type userSuccessAction = {
   type: userTypes.USER_SUCCESS;
-  payload: User;
+  //payload: User;
+  payload: getUserByUsernameBodyPromise;
 };
 
 export type userErrorAction = {
@@ -15,6 +16,14 @@ export type userErrorAction = {
   payload: string;
 };
 
-type userAction = userStartAction | userSuccessAction | userErrorAction;
+export type userFinishAction = {
+  type: userTypes.USER_FINISH;
+};
+
+type userAction =
+  | userStartAction
+  | userSuccessAction
+  | userErrorAction
+  | userFinishAction;
 
 export default userAction;

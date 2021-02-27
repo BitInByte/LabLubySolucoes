@@ -5,7 +5,7 @@ const initialState: IUsersState = {
   login: null,
   error: null,
   loading: false,
-  data: null,
+  data: undefined,
 };
 
 const userActionStart = (state: IUsersState, _: userActions): IUsersState => {
@@ -49,6 +49,12 @@ const userActionError = (
   };
 };
 
+const userActionFinish = (state: IUsersState, _: userActions): IUsersState => {
+  return {
+    ...initialState,
+  };
+};
+
 const usersReducer = (state = initialState, action: userActions) => {
   switch (action.type) {
     case userTypes.USER_START:
@@ -57,6 +63,8 @@ const usersReducer = (state = initialState, action: userActions) => {
       return userActionSuccess(state, action);
     case userTypes.USER_ERROR:
       return userActionError(state, action);
+    case userTypes.USER_FINISH:
+      return userActionFinish(state, action);
     default:
       return state;
   }

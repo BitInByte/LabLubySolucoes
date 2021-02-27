@@ -2,5 +2,5 @@
 
 ## TODOS:
 
-1. Check if user is already on localstorage;
-2. Implement react-router based on the user logged in or not;
+1. Bug on the campo obrigatorio at login page, dynamic opacity is not working
+2. Bug isHome on / page

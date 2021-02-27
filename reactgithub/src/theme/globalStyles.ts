@@ -40,7 +40,7 @@ const globalStyle = createGlobalStyle`
     background-color: #2A2A2A;
   }
   body {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
     font-weight: normal;
@@ -48,6 +48,7 @@ const globalStyle = createGlobalStyle`
     font-kerning: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: ${(props) => props.theme.colors.white};
   }
   main {
     width: 100%;

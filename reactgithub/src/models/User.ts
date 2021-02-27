@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 //import axios from "../utils/axios-instance";
 
-type getUserByUsernameBodyPromise = {
+export type getUserByUsernameBodyPromise = {
   login: string | null;
   name: string | null;
   email: string | null;
@@ -70,6 +70,7 @@ class User {
       this.company = response.data.company;
       this.bio = response.data.bio;
       this.avatar_url = response.data.avatar_url;
+      this.followers_url = response.data.followers_url;
       this.following_url = response.data.following_url;
       this.organizations_url = response.data.organizations_url;
       this.starred_url = response.data.starred_url;
@@ -83,6 +84,30 @@ class User {
       console.log(err);
       return false;
     }
+  }
+
+  public getData(): getUserByUsernameBodyPromise {
+    return {
+      login: this.login,
+      name: this.name,
+      email: this.email,
+      location: this.location,
+      company: this.company,
+      bio: this.bio,
+      avatar_url: this.avatar_url,
+      following_url: this.following_url,
+      followers_url: this.followers_url,
+      organizations_url: this.organizations_url,
+      starred_url: this.starred_url,
+      public_gists: this.public_gists,
+      public_repos: this.public_repos,
+      followers: this.followers,
+      following: this.following,
+    };
+  }
+
+  public static checkUserLoggedIn() {
+    return localStorage.getItem("username");
   }
 }
 
