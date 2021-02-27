@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect } from "react";
 import styled from "styled-components";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import Login from "./pages/Login";
@@ -50,6 +50,7 @@ const App = () => {
           <Route path="/following" component={Follow} />
           <Route path="/repos" component={Repos} />
           <Route path="/" exact component={Home} />
+          <Redirect to="/" />
         </Switch>
       </Layout>
     );
@@ -58,6 +59,7 @@ const App = () => {
     routes = (
       <Switch>
         <Route path="/" exact component={Login} />
+        <Redirect to="/" />
       </Switch>
     );
   }

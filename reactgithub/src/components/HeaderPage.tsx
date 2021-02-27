@@ -11,10 +11,13 @@ interface IHeaderPageElement {
 }
 
 const HeaderPageElement = styled.div<IHeaderPageElement>`
+  position: relative;
   width: 100%;
   background-color: ${(props) => props.theme.colors.headerPage};
   padding-bottom: ${(props) =>
     props.avatarUrl ? props.theme.sizes.avatar / 2 : 0}rem;
+  padding-top: 2rem;
+  top: -2rem;
 `;
 
 const RowElement = styled.div`
@@ -36,7 +39,13 @@ const RowElement = styled.div`
     text-align: center;
   }
 
+  button:first-child:nth-last-child(3),
+  button:first-child:nth-last-child(3) ~ button {
+    flex: 1;
+  }
+
   & button {
+    flex: 0;
     color: inherit;
     text-align: left;
     cursor: pointer;

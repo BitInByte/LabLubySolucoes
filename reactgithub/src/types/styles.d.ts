@@ -13,6 +13,9 @@ declare module "styled-components" {
       headerPage: string;
       green: string;
       numberInformation: string;
+      navLinkNotSelected: string;
+      navLinkSelected: string;
+      rowBorder: string;
     };
     sizes: {
       elementSize: string;

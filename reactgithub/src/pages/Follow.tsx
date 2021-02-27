@@ -17,6 +17,13 @@ const FollowContent = styled.div`
   margin: 2rem 0;
 `;
 
+const LinkElement = styled(Link)`
+  display: block;
+  &:not(:last-child) {
+    border-bottom: solid 0.05rem ${(props) => props.theme.colors.rowBorder};
+  }
+`;
+
 // Interface
 interface IProps {}
 
@@ -45,13 +52,13 @@ const Follow: React.FC<IProps> = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [currentUrl]);
 
   useEffect(() => {
     return () => {
       dispatch({ type: actionTypes.FOLLOW_RESET });
     };
-  }, []);
+  }, [currentUrl]);
 
   const onGoBackActionHandler = () => {
     history.push("/");
@@ -72,13 +79,13 @@ const Follow: React.FC<IProps> = () => {
         <FollowContent>
           <ul>
             {follow!.data!.map((follow) => (
-              <Link to={`/user/${follow.login}`}>
+              <LinkElement to={`/user/${follow.login}`} key={follow.login}>
                 <RowElement
                   key={follow.login}
                   avatarUrl={follow.avatar_url}
                   username={follow.login}
                 />
-              </Link>
+              </LinkElement>
             ))}
           </ul>
         </FollowContent>

@@ -10,6 +10,9 @@ const theme: DefaultTheme = {
     headerPage: "#202020",
     green: "#5BBA29",
     numberInformation: "#383838",
+    navLinkNotSelected: "#A5A5A5",
+    navLinkSelected: "#282828",
+    rowBorder: "#434343",
   },
   sizes: {
     elementSize: "35rem",

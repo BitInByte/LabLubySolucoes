@@ -8,9 +8,9 @@ import H3 from "./UI/H3";
 
 // Styles
 const UrlLink = styled.a`
-  border-bottom: solid 0.05rem #434343;
+  display: block;
   &:not(:last-child) {
-    border-bottom: solid 0.05rem #434343;
+    border-bottom: solid 0.05rem ${(props) => props.theme.colors.rowBorder};
   }
 `;
 
@@ -22,6 +22,7 @@ const RowElement = styled.li`
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
+  //border-bottom: solid 0.05rem #434343;
 
   & p {
     margin-top: 1rem;

@@ -69,9 +69,6 @@ const globalStyle = createGlobalStyle`
 
   section {
     width: 100%;
-    //min-height: calc(100vh - (9rem + 7.6rem));
-    //display: flex;
-    //justify-content: center;
   }
 
   #root {

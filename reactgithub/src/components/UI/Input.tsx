@@ -31,7 +31,7 @@ const LabelElement = styled.label<IStyledLabel>`
   right: 0;
   padding-right: 3rem;
   transform: translateY(-50%);
-  opacity: ${(props) => (props.label && props.label ? "1" : "0")};
+  opacity: ${(props) => (props.label ? "1" : "0")};
   transition: all 0.3s ease-in;
   color: ${(props) => props.theme.colors.red};
 `;
@@ -63,7 +63,7 @@ const Input: React.FC<IProps> = ({
         value={value}
         onChange={onChange}
       />
-      <LabelElement>{label}</LabelElement>
+      <LabelElement label={label}>{label}</LabelElement>
     </InputWrapper>
   );
 };

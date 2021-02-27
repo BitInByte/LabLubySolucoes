@@ -28,7 +28,7 @@ const UserPage: React.FC<IProps> = () => {
         await dispatch(getUserByUsername({ username, isLogin: false }));
     };
     checkLoggedUser();
-  }, []);
+  }, [username]);
 
   const user: IUsersState = useSelector((state: IStore) => state.user);
 

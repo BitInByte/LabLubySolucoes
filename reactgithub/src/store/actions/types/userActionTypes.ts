@@ -1,5 +1,5 @@
 import actionTypes from "../actionTypes";
-import User, { getUserByUsernameBodyPromise } from "../../../models/User";
+import User, { userAttributes } from "../../../models/User";
 
 export type userStartAction = {
   type: actionTypes.USER_START;
@@ -7,7 +7,7 @@ export type userStartAction = {
 
 export type userSuccessAction = {
   type: actionTypes.USER_SUCCESS;
-  payload: getUserByUsernameBodyPromise;
+  payload: userAttributes;
 };
 
 export type userErrorAction = {

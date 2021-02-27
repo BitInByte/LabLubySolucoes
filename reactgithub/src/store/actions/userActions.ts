@@ -7,7 +7,7 @@ import {
   userFinishAction,
 } from "./types/userActionTypes";
 
-import User, { getUserByUsernameBodyPromise } from "../../models/User";
+import User, { userAttributes } from "../../models/User";
 
 import { addLocalStorageUserInformation } from "../../utils/localStorage";
 
@@ -17,7 +17,7 @@ const authStart = (): userStartAction => {
   };
 };
 
-const authSuccess = (user: getUserByUsernameBodyPromise): userSuccessAction => {
+const authSuccess = (user: userAttributes): userSuccessAction => {
   return {
     type: actionTypes.USER_SUCCESS,
     payload: user,
@@ -55,11 +55,13 @@ export const getUserByUsername = ({
     const newUser = new User(username);
     const response: boolean = await newUser.getUserByUsername();
     if (!response) {
-      dispatch(
-        authError(
-          "Ocorreu um erro! Verifique se o nome de utilizador esta correto!"
-        )
-      );
+      //return dispatch(
+      //authError(
+      //"Ocorreu um erro! Verifique se o nome de utilizador esta correto!"
+      //)
+      //);
+      dispatch(authClear());
+      return;
     }
     if (isLogin) {
       addLocalStorageUserInformation(username);

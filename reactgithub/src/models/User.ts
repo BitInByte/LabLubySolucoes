@@ -1,65 +1,50 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 //import axios from "../utils/axios-instance";
 
-export type getUserByUsernameBodyPromise = {
-  login: string | null;
-  name: string | null;
-  email: string | null;
-  location: string | null;
-  company: string | null;
-  bio: string | null;
-  avatar_url: string | null;
-  followers_url: string | null;
-  following_url: string | null;
-  organizations_url: string | null;
-  starred_url: string | null;
-  public_repos: number | null;
-  public_gists: number | null;
-  followers: number | null;
-  following: number | null;
-  repos_url: string | null;
+export type userAttributes = {
+  login: string;
+  name?: string;
+  email?: string;
+  location?: string;
+  company?: string;
+  bio?: string;
+  avatar_url?: string;
+  followers_url?: string;
+  following_url?: string;
+  organizations_url?: string;
+  starred_url?: string;
+  public_repos?: number;
+  public_gists?: number;
+  followers?: number;
+  following?: number;
+  repos_url?: string;
 };
 
 class User {
   private login: string;
-  private name: string | null;
-  private email: string | null;
-  private location: string | null;
-  private company: string | null;
-  private bio: string | null;
-  private avatar_url: string | null;
-  private followers_url: string | null;
-  private following_url: string | null;
-  private organizations_url: string | null;
-  private starred_url: string | null;
-  private public_repos: number | null;
-  private public_gists: number | null;
-  private followers: number | null;
-  private following: number | null;
-  private repos_url: string | null;
+  private name?: string;
+  private email?: string;
+  private location?: string;
+  private company?: string;
+  private bio?: string;
+  private avatar_url?: string;
+  private followers_url?: string;
+  private following_url?: string;
+  private organizations_url?: string;
+  private starred_url?: string;
+  private public_repos?: number;
+  private public_gists?: number;
+  private followers?: number;
+  private following?: number;
+  private repos_url?: string;
 
   constructor(username: string) {
     console.log("Username: ", username);
     this.login = username;
-    this.name = null;
-    this.email = null;
-    this.company = null;
-    this.bio = null;
-    this.avatar_url = null;
-    this.followers_url = null;
-    this.following_url = null;
-    this.organizations_url = null;
-    this.starred_url = null;
-    this.public_repos = null;
-    this.public_gists = null;
-    this.followers = null;
-    this.following = null;
-    this.location = null;
-    this.repos_url = null;
   }
 
   public async getUserByUsername() {
-    let response: AxiosResponse<getUserByUsernameBodyPromise>;
+    let response: AxiosResponse<userAttributes>;
     console.log("Login 2: ", this.login);
 
     try {
@@ -85,12 +70,12 @@ class User {
       return true;
     } catch (error) {
       const err = error as AxiosError;
-      console.log(err);
+      console.log("User Error: ", err.message);
       return false;
     }
   }
 
-  public getData(): getUserByUsernameBodyPromise {
+  public getData(): userAttributes {
     return {
       login: this.login,
       name: this.name,
