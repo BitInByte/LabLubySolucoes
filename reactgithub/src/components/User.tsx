@@ -2,6 +2,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 // Import components
 import HeaderPage from "./HeaderPage";
@@ -28,16 +29,25 @@ const NumberRow = styled.div`
   margin-top: 2rem;
   background-color: ${(props) => props.theme.colors.numberInformation};
   display: flex;
+
+  & a {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
 `;
 
-const NumberColumn = styled.div`
+const NumberColumn = styled.button`
   display: flex;
   flex-direction: column;
-  flex: 1;
+  //flex: 1;
   text-align: center;
   padding: 1rem;
   color: inherit;
   font-size: inherit;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 
   & p:nth-child(1) {
     font-size: 4rem;
@@ -58,6 +68,7 @@ interface IProps {
   avatarUrl: string;
   login: string;
   onActionHandler: () => void;
+  onGoBackActionHandler?: () => void;
 }
 
 // Component
@@ -73,6 +84,7 @@ const User: React.FC<IProps> = ({
   avatarUrl,
   login,
   onActionHandler,
+  onGoBackActionHandler,
 }) => {
   //const user: IUsersState = useSelector((state: IStore) => state.user);
   return (
@@ -84,6 +96,7 @@ const User: React.FC<IProps> = ({
         isUser
         avatarUrl={avatarUrl}
         onActionHandler={onActionHandler}
+        onGoBackActionHandler={onGoBackActionHandler}
       />
       <UserContent>
         <H2>{name}</H2>
@@ -91,18 +104,24 @@ const User: React.FC<IProps> = ({
         <p>{location}</p>
       </UserContent>
       <NumberRow>
-        <NumberColumn>
-          <p>{followers}</p>
-          <p>Seguidores</p>
-        </NumberColumn>
-        <NumberColumn>
-          <p>{following}</p>
-          <p>Seguindo</p>
-        </NumberColumn>
-        <NumberColumn>
-          <p>{repos}</p>
-          <p>Repos</p>
-        </NumberColumn>
+        <Link to="/followers">
+          <NumberColumn>
+            <p>{followers}</p>
+            <p>Seguidores</p>
+          </NumberColumn>
+        </Link>
+        <Link to="/following">
+          <NumberColumn>
+            <p>{following}</p>
+            <p>Seguindo</p>
+          </NumberColumn>
+        </Link>
+        <Link to="/repos">
+          <NumberColumn>
+            <p>{repos}</p>
+            <p>Repos</p>
+          </NumberColumn>
+        </Link>
       </NumberRow>
       <UserContent>
         <H2>Bio</H2>

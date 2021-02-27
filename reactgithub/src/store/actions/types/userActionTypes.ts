@@ -1,23 +1,22 @@
-import { userTypes } from "../actionTypes";
+import actionTypes from "../actionTypes";
 import User, { getUserByUsernameBodyPromise } from "../../../models/User";
 
 export type userStartAction = {
-  type: userTypes.USER_START;
+  type: actionTypes.USER_START;
 };
 
 export type userSuccessAction = {
-  type: userTypes.USER_SUCCESS;
-  //payload: User;
+  type: actionTypes.USER_SUCCESS;
   payload: getUserByUsernameBodyPromise;
 };
 
 export type userErrorAction = {
-  type: userTypes.USER_ERROR;
+  type: actionTypes.USER_ERROR;
   payload: string;
 };
 
 export type userFinishAction = {
-  type: userTypes.USER_FINISH;
+  type: actionTypes.USER_FINISH;
 };
 
 type userAction =

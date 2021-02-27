@@ -39,6 +39,7 @@ const RowElement = styled.div`
   & button {
     color: inherit;
     text-align: left;
+    cursor: pointer;
   }
 `;
 
@@ -92,6 +93,7 @@ interface IProps extends IActionIcon, IHeaderPageElement {
   title: string;
   isUser: boolean;
   onActionHandler?: () => void;
+  onGoBackActionHandler?: () => void;
 }
 
 // Component
@@ -101,6 +103,7 @@ const HeaderPage: React.FC<IProps> = ({
   isUser,
   avatarUrl,
   onActionHandler,
+  onGoBackActionHandler,
 }) => {
   console.log("isUser: ", isUser);
   console.log("Avatar: ", avatarUrl);
@@ -109,7 +112,7 @@ const HeaderPage: React.FC<IProps> = ({
     <HeaderPageElement avatarUrl={avatarUrl}>
       <RowElement>
         {!isHome && (
-          <button>
+          <button onClick={onGoBackActionHandler}>
             <GoBackIcon />
           </button>
         )}

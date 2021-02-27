@@ -14,20 +14,12 @@ const Layout = React.lazy(() => import("./hoc/Layout"));
 const Home = React.lazy(() => import("./pages/Home"));
 const Follow = React.lazy(() => import("./pages/Follow"));
 const Repos = React.lazy(() => import("./pages/Repos"));
+const UserPage = React.lazy(() => import("./pages/User"));
 
 const AppWrapper = styled.div`
   max-width: 100rem;
-  //background-color: white;
   margin: 0 auto;
   height: 100%;
-`;
-
-const SpinnerWrapper = styled.div`
-  width: 100%
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 const App = () => {
@@ -37,7 +29,8 @@ const App = () => {
     const checkLoggedUser = async () => {
       const username = User.checkUserLoggedIn();
       console.log("Username: ", username);
-      if (username) await dispatch(getUserByUsername({ username }));
+      if (username)
+        await dispatch(getUserByUsername({ username, isLogin: false }));
     };
 
     checkLoggedUser();
@@ -52,10 +45,11 @@ const App = () => {
     routes = (
       <Layout>
         <Switch>
-          <Route path="/follower" component={Follow} />
+          <Route path="/user/:username" component={UserPage} />
+          <Route path="/followers" component={Follow} />
           <Route path="/following" component={Follow} />
           <Route path="/repos" component={Repos} />
-          <Route path="/" component={Home} />
+          <Route path="/" exact component={Home} />
         </Switch>
       </Layout>
     );
@@ -63,22 +57,14 @@ const App = () => {
     console.log("I dont have username");
     routes = (
       <Switch>
-        <Route path="/" component={Login} />
+        <Route path="/" exact component={Login} />
       </Switch>
     );
   }
 
   return (
     <AppWrapper>
-      <Suspense
-        fallback={
-          <SpinnerWrapper>
-            <Spinner />
-          </SpinnerWrapper>
-        }
-      >
-        {routes}
-      </Suspense>
+      <Suspense fallback={<Spinner withWrapper />}>{routes}</Suspense>
     </AppWrapper>
   );
 };

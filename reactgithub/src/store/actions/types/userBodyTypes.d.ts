@@ -1,3 +1,0 @@
-type getUserByUsernameBody = {
-  username: string;
-};

@@ -7,6 +7,13 @@ import { BiStar, BiLockAlt, BiLockOpenAlt } from "react-icons/bi";
 import H3 from "./UI/H3";
 
 // Styles
+const UrlLink = styled.a`
+  border-bottom: solid 0.05rem #434343;
+  &:not(:last-child) {
+    border-bottom: solid 0.05rem #434343;
+  }
+`;
+
 const RowElement = styled.li`
   width: 100%;
   padding: 2.5rem 0;
@@ -15,9 +22,6 @@ const RowElement = styled.li`
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  &:not(:last-child) {
-    border-bottom: solid 0.05rem #434343;
-  }
 
   & p {
     margin-top: 1rem;
@@ -64,24 +68,34 @@ const LockOpen = styled(BiLockOpenAlt)`
 // Interface
 interface IProps {
   repoName: string;
+  stars: number;
+  description: string;
+  repoUrl: string;
 }
 
 // Component
-const RepoRow: React.FC<IProps> = ({ repoName }) => {
+const RepoRow: React.FC<IProps> = ({
+  repoName,
+  stars,
+  description,
+  repoUrl,
+}) => {
   return (
-    <RowElement>
-      <H3>{repoName}</H3>
-      <p>Repository for centralization of the BrasiliApp mobile project</p>
-      <RepoInfoRow>
-        <p>
-          <StarIcon /> 32
-        </p>
-        <p>
-          <LockOpen />
-          <LockClose />
-        </p>
-      </RepoInfoRow>
-    </RowElement>
+    <UrlLink href={repoUrl} target="_blank">
+      <RowElement>
+        <H3>{repoName}</H3>
+        <p>{description}</p>
+        <RepoInfoRow>
+          <p>
+            <StarIcon /> {stars}
+          </p>
+          <p>
+            <LockOpen />
+            <LockClose />
+          </p>
+        </RepoInfoRow>
+      </RowElement>
+    </UrlLink>
   );
 };
 

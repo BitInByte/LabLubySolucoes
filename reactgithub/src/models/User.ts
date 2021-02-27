@@ -17,6 +17,7 @@ export type getUserByUsernameBodyPromise = {
   public_gists: number | null;
   followers: number | null;
   following: number | null;
+  repos_url: string | null;
 };
 
 class User {
@@ -35,6 +36,7 @@ class User {
   private public_gists: number | null;
   private followers: number | null;
   private following: number | null;
+  private repos_url: string | null;
 
   constructor(username: string) {
     console.log("Username: ", username);
@@ -53,6 +55,7 @@ class User {
     this.followers = null;
     this.following = null;
     this.location = null;
+    this.repos_url = null;
   }
 
   public async getUserByUsername() {
@@ -78,6 +81,7 @@ class User {
       this.public_repos = response.data.public_repos;
       this.followers = response.data.followers;
       this.following = response.data.following;
+      this.repos_url = response.data.repos_url;
       return true;
     } catch (error) {
       const err = error as AxiosError;
@@ -103,6 +107,7 @@ class User {
       public_repos: this.public_repos,
       followers: this.followers,
       following: this.following,
+      repos_url: this.repos_url,
     };
   }
 

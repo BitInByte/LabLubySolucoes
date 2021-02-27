@@ -1,18 +1,29 @@
-import { followTypes } from "../actionTypes";
+import actionTypes from "../actionTypes";
+import { followAttributes } from "../../../models/Follow";
 
 export type followStartAction = {
-  type: followTypes.FOLLOW_START;
+  type: actionTypes.FOLLOW_START;
 };
 
 export type followErrorAction = {
-  type: followTypes.FOLLOW_ERROR;
+  type: actionTypes.FOLLOW_ERROR;
   payload: string;
 };
 
 export type followSuccessAction = {
-  type: followTypes.FOLLOW_SUCCESS;
+  //type:.FOLLOW_SUCCESS;
+  type: actionTypes.FOLLOW_SUCCESS;
+  payload: followAttributes;
 };
 
-type followAction = followStartAction | followErrorAction | followSuccessAction;
+export type followResetAction = {
+  type: actionTypes.FOLLOW_RESET;
+};
+
+type followAction =
+  | followStartAction
+  | followErrorAction
+  | followSuccessAction
+  | followResetAction;
 
 export default followAction;

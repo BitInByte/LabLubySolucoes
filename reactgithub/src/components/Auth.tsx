@@ -12,7 +12,8 @@ import User from "../models/User";
 import Input from "./UI/Input";
 import Button from "./UI/Button";
 import Spinner from "./UI/Spinner";
-import { userTypes } from "../store/actions/actionTypes";
+import actionTypes from "../store/actions/actionTypes";
+import { addLocalStorageUserInformation } from "../utils/localStorage";
 
 // Styles
 const Form = styled.form`
@@ -48,12 +49,12 @@ const Auth: React.FC<IProps> = () => {
     event.preventDefault();
     if (userInput.length <= 0) {
       dispatch({
-        type: userTypes.USER_ERROR,
+        type: actionTypes.USER_ERROR,
         payload: "Campo Obrigatorio",
       });
       return;
     }
-    dispatch(getUserByUsername({ username: userInput }));
+    dispatch(getUserByUsername({ username: userInput, isLogin: true }));
   };
 
   const element = user.loading ? (

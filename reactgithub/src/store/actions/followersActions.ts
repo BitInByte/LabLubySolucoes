@@ -1,27 +1,30 @@
 import { AppThunk } from "../types/thunk";
 import axios from "axios";
-import { followTypes } from "./actionTypes";
+import actionTypes from "./actionTypes";
 import {
   followStartAction,
   followSuccessAction,
   followErrorAction,
 } from "./types/followActionTypes";
+import Follow, { followAttributes } from "../../models/Follow";
 
 const followStart = (): followStartAction => {
   return {
-    type: followTypes.FOLLOW_START,
+    type: actionTypes.FOLLOW_START,
   };
 };
 
-const followSuccess = (): followSuccessAction => {
+const followSuccess = (follows: followAttributes): followSuccessAction => {
   return {
-    type: followTypes.FOLLOW_SUCCESS,
+    //type: followTypes.FOLLOW_SUCCESS,
+    type: actionTypes.FOLLOW_SUCCESS,
+    payload: follows,
   };
 };
 
 const followError = (error: string): followErrorAction => {
   return {
-    type: followTypes.FOLLOW_ERROR,
+    type: actionTypes.FOLLOW_ERROR,
     payload: error,
   };
 };
@@ -32,13 +35,14 @@ export const getFollowsByUrl = (url: string): AppThunk => {
     dispatch(followStart());
     console.log("Dispatched");
     console.log("URL: ", url);
-    let response;
+    let response: followAttributes | null;
 
-    try {
-      response = await axios.get(url);
-      console.log("Response: ", response.data);
-    } catch (err) {
-      console.log(err);
+    //response = await axios.get(url);
+    response = await Follow.getFollowsByUrl(url);
+    if (!response) {
+      return dispatch(followError("Algo correu mal!"));
     }
+    dispatch(followSuccess(response!));
+    console.log("Response: ", response);
   };
 };

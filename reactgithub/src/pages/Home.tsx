@@ -1,12 +1,15 @@
 // Import libraries
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 // Import components
 import User from "../components/User";
 
-//import { logout } from "../store/actions/userActions";
-import { userTypes } from "../store/actions/actionTypes";
+import actionTypes from "../store/actions/actionTypes";
+
+import { getUserByUsername } from "../store/actions/userActions";
+
+import UserModel from "../models/User";
 
 // Styles
 
@@ -16,15 +19,35 @@ interface IProps {}
 // Component
 const Home: React.FC<IProps> = () => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const checkLoggedUser = async () => {
+      const username = UserModel.checkUserLoggedIn();
+      console.log("Username: ", username);
+      if (username)
+        await dispatch(getUserByUsername({ username, isLogin: false }));
+    };
+
+    checkLoggedUser();
+  }, []);
+
+  //useEffect(() => {
+  //return () => {
+  //dispatch({
+  //type: actionTypes.USER_FINISH,
+  //});
+  //};
+  //}, []);
+
   const user: IUsersState = useSelector((state: IStore) => state.user);
 
   const userLogout = () => {
     dispatch({
-      type: userTypes.USER_START,
+      type: actionTypes.USER_START,
     });
     localStorage.removeItem("username");
     dispatch({
-      type: userTypes.USER_FINISH,
+      type: actionTypes.USER_FINISH,
     });
   };
 

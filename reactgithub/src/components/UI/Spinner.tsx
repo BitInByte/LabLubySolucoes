@@ -14,10 +14,25 @@ const SpinnerElement = styled(CircularProgress)`
   }
 `;
 
+const SpinnerWrapper = styled.div`
+  width: 100%;
+  padding: 20rem;
+  text-align: center;
+`;
+
 // Interface
-interface IProps {}
+interface IProps {
+  withWrapper?: boolean;
+}
 
 // Component
-const Spinner: React.FC<IProps> = () => <SpinnerElement />;
+const Spinner: React.FC<IProps> = ({ withWrapper }) =>
+  withWrapper ? (
+    <SpinnerWrapper>
+      <SpinnerElement />
+    </SpinnerWrapper>
+  ) : (
+    <SpinnerElement />
+  );
 
 export default Spinner;

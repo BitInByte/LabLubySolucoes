@@ -1,4 +1,4 @@
-import { userTypes } from "../actions/actionTypes";
+import actionTypes from "../actions/actionTypes";
 import userActions from "../actions/types/userActionTypes";
 
 const initialState: IUsersState = {
@@ -22,7 +22,7 @@ const userActionSuccess = (
   action: userActions
 ): IUsersState => {
   let user;
-  if (action.type === userTypes.USER_SUCCESS) {
+  if (action.type === actionTypes.USER_SUCCESS) {
     user = action.payload;
   }
 
@@ -38,7 +38,7 @@ const userActionError = (
   action: userActions
 ): IUsersState => {
   let error = null;
-  if (action.type === userTypes.USER_ERROR) {
+  if (action.type === actionTypes.USER_ERROR) {
     error = action.payload;
   }
 
@@ -57,13 +57,13 @@ const userActionFinish = (state: IUsersState, _: userActions): IUsersState => {
 
 const usersReducer = (state = initialState, action: userActions) => {
   switch (action.type) {
-    case userTypes.USER_START:
+    case actionTypes.USER_START:
       return userActionStart(state, action);
-    case userTypes.USER_SUCCESS:
+    case actionTypes.USER_SUCCESS:
       return userActionSuccess(state, action);
-    case userTypes.USER_ERROR:
+    case actionTypes.USER_ERROR:
       return userActionError(state, action);
-    case userTypes.USER_FINISH:
+    case actionTypes.USER_FINISH:
       return userActionFinish(state, action);
     default:
       return state;
