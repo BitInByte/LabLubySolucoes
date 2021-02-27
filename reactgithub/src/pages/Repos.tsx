@@ -45,7 +45,7 @@ const Repos: React.FC<IProps> = () => {
         <HeaderPage
           title={`${repos.data.length} repositorios`}
           isUser={false}
-          isHome={false}
+          $isHome={false}
           onGoBackActionHandler={onGoBackActionHandler}
         />
         <RepoContent>

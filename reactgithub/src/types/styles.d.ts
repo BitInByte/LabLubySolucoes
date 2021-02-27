@@ -35,6 +35,7 @@ declare module "styled-components" {
       element: string;
     };
     mediaQueries: {
+      maxBreakPoint: string;
       small: string;
     };
   }

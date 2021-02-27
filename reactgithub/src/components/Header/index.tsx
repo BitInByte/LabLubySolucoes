@@ -17,6 +17,10 @@ const HeaderElement = styled.header`
   justify-content: center;
   z-index: 1;
 
+  @media ${(props) => props.theme.mediaQueries.maxBreakPoint} {
+    margin-top: 0;
+  }
+
   @media ${(props) => props.theme.mediaQueries.small} {
     margin: 0;
     border-radius: 2rem 2rem 0 0;

@@ -91,8 +91,8 @@ const User: React.FC<IProps> = ({
     <>
       <HeaderPage
         //title={name.split(" ").join(".")}
-        title={login}
-        isHome={isHome}
+        title={`#${login}`}
+        $isHome={isHome}
         isUser
         avatarUrl={avatarUrl}
         onActionHandler={onActionHandler}

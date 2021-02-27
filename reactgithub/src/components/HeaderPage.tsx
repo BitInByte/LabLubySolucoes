@@ -65,12 +65,12 @@ const ActionElement = styled.button`
 `;
 
 interface IActionIcon {
-  isHome: boolean;
+  $isHome: boolean;
 }
 
 const ActionIcon = styled(IoMdExit)<IActionIcon>`
   color: ${(props) =>
-    props.isHome ? props.theme.colors.red : props.theme.colors.green};
+    props.$isHome ? props.theme.colors.red : props.theme.colors.green};
   margin-left: 0.6rem;
   font-size: 3rem;
 `;
@@ -108,7 +108,7 @@ interface IProps extends IActionIcon, IHeaderPageElement {
 // Component
 const HeaderPage: React.FC<IProps> = ({
   title,
-  isHome,
+  $isHome,
   isUser,
   avatarUrl,
   onActionHandler,
@@ -120,16 +120,16 @@ const HeaderPage: React.FC<IProps> = ({
   return (
     <HeaderPageElement avatarUrl={avatarUrl}>
       <RowElement>
-        {!isHome && (
+        {!$isHome && (
           <button onClick={onGoBackActionHandler}>
             <GoBackIcon />
           </button>
         )}
-        <p>#{title}</p>
+        <p>{title}</p>
         {isUser && (
           <ActionElement onClick={onActionHandler}>
-            {isHome ? "Sair" : "Salvar"}
-            <ActionIcon isHome={isHome} />
+            {$isHome ? "Sair" : "Salvar"}
+            <ActionIcon $isHome={$isHome} />
           </ActionElement>
         )}
       </RowElement>

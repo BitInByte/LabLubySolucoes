@@ -27,7 +27,8 @@ const theme: DefaultTheme = {
     element: "2.5rem",
   },
   mediaQueries: {
-    small: "only screen and (max-width: 25em)",
+    maxBreakPoint: "only screen and (max-width: 65.625em)",
+    small: "only screen and (max-width: 28.125em)",
   },
 };
 

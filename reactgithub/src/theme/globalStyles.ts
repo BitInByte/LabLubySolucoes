@@ -49,9 +49,14 @@ const globalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: ${(props) => props.theme.colors.white};
+
   }
   main {
     width: 100%;
+
+    @media ${(props) => props.theme.mediaQueries.small} {
+      margin-bottom: 7rem;
+    }
   }
   code {
     font-family: "Cascadia Code PL", source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

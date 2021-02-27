@@ -73,7 +73,7 @@ const Follow: React.FC<IProps> = () => {
             currentUrl === "/followers" ? " seguidores" : "seguindo"
           }`}
           isUser={false}
-          isHome={false}
+          $isHome={false}
           onGoBackActionHandler={onGoBackActionHandler}
         />
         <FollowContent>
