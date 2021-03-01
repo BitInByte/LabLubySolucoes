@@ -3,4 +3,4 @@
 ## Lab Luby solucoes para teste de candidatura
 
 Ambos os testes, lógicos e práticos estão disponíveis em branchs separadas.
-O teste logic esta na branch logicTest e o teste técnico esta na branch technicalTest.
+O teste logico esta na branch logicTest e o teste técnico esta na branch technicalTest.
