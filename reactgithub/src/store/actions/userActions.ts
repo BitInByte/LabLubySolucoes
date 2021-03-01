@@ -48,18 +48,10 @@ export const getUserByUsername = ({
   isLogin,
 }: getUserByUsernameBody): AppThunk => {
   return async (dispatch) => {
-    //dispatch(authClear());
     dispatch(authStart());
-    console.log("Dispatched");
-    console.log(username);
     const newUser = new User(username);
     const response: boolean = await newUser.getUserByUsername();
     if (!response) {
-      //return dispatch(
-      //authError(
-      //"Ocorreu um erro! Verifique se o nome de utilizador esta correto!"
-      //)
-      //);
       dispatch(authClear());
       return;
     }

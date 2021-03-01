@@ -27,3 +27,5 @@ reactgithub/.idea
 reactgithub/package-lock.json
 
 reactgithub/*.env
+
+.DS_Store

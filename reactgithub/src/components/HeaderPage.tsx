@@ -114,9 +114,6 @@ const HeaderPage: React.FC<IProps> = ({
   onActionHandler,
   onGoBackActionHandler,
 }) => {
-  console.log("isUser: ", isUser);
-  console.log("Avatar: ", avatarUrl);
-
   return (
     <HeaderPageElement avatarUrl={avatarUrl}>
       <RowElement>

@@ -6,9 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import User from "../components/User";
 
 import actionTypes from "../store/actions/actionTypes";
-
 import { getUserByUsername } from "../store/actions/userActions";
-
 import UserModel from "../models/User";
 
 // Styles
@@ -23,21 +21,12 @@ const Home: React.FC<IProps> = () => {
   useEffect(() => {
     const checkLoggedUser = async () => {
       const username = UserModel.checkUserLoggedIn();
-      console.log("Username: ", username);
       if (username)
         await dispatch(getUserByUsername({ username, isLogin: false }));
     };
 
     checkLoggedUser();
   }, []);
-
-  //useEffect(() => {
-  //return () => {
-  //dispatch({
-  //type: actionTypes.USER_FINISH,
-  //});
-  //};
-  //}, []);
 
   const user: IUsersState = useSelector((state: IStore) => state.user);
 

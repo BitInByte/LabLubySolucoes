@@ -22,7 +22,6 @@ const RowElement = styled.li`
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  //border-bottom: solid 0.05rem #434343;
 
   & p {
     margin-top: 1rem;

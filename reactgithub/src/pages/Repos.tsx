@@ -24,6 +24,7 @@ interface IProps {}
 const Repos: React.FC<IProps> = () => {
   const history = useHistory();
   const dispatch = useDispatch();
+
   const repos: IReposState = useSelector((state: IStore) => state.repos);
   const users: IUsersState = useSelector((state: IStore) => state.user);
 
@@ -39,7 +40,9 @@ const Repos: React.FC<IProps> = () => {
   };
 
   let elements;
-  if (repos && repos.data) {
+  if (repos.loading) {
+    elements = <Spinner withWrapper />;
+  } else if (repos && repos.data) {
     elements = (
       <>
         <HeaderPage
@@ -55,7 +58,7 @@ const Repos: React.FC<IProps> = () => {
                 repoName={repo.name}
                 stars={repo.stargazers_count}
                 description={repo.description}
-                repoUrl={repo.url}
+                repoUrl={repo.html_url}
                 key={repo.name}
               />
             ))}

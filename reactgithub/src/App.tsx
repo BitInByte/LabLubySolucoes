@@ -28,7 +28,6 @@ const App = () => {
   useEffect(() => {
     const checkLoggedUser = async () => {
       const username = User.checkUserLoggedIn();
-      console.log("Username: ", username);
       if (username)
         await dispatch(getUserByUsername({ username, isLogin: false }));
     };
@@ -41,7 +40,6 @@ const App = () => {
   let routes = null;
 
   if (user && user.data && user.data.login) {
-    console.log("I have username!");
     routes = (
       <Layout>
         <Switch>
@@ -55,7 +53,6 @@ const App = () => {
       </Layout>
     );
   } else {
-    console.log("I dont have username");
     routes = (
       <Switch>
         <Route path="/" exact component={Login} />

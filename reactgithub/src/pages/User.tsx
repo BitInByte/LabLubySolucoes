@@ -18,8 +18,8 @@ interface IProps {}
 const UserPage: React.FC<IProps> = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+
   const { username } = useParams<{ username: string }>();
-  console.log("Username: ", username);
 
   useEffect(() => {
     const checkLoggedUser = async () => {
@@ -32,7 +32,6 @@ const UserPage: React.FC<IProps> = () => {
   const user: IUsersState = useSelector((state: IStore) => state.user);
 
   const onUserSigninHandler = () => {
-    console.log("Sign me in!");
     if (user && user.data) {
       addLocalStorageUserInformation(user.data.login!);
     }

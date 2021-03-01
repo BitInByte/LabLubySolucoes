@@ -35,19 +35,13 @@ const Follow: React.FC<IProps> = () => {
   const user: IUsersState = useSelector((state: IStore) => state.user);
   const follow: IFollowState = useSelector((state: IStore) => state.follow);
 
-  console.log("Follow: ", follow);
-  console.log("URL: ", location.pathname === "/follower");
   const currentUrl = location.pathname;
 
   useEffect(() => {
     const fetchData = async () => {
       if (currentUrl === "/followers") {
-        console.log("Followers URL: ", user.data?.followers_url);
-
         dispatch(getFollowsByUrl(user!.data!.followers_url!));
       } else {
-        console.log("Following URL: ", user.data?.following_url);
-
         dispatch(getFollowsByUrl(user!.data!.following_url!.split("{")[0]));
       }
     };

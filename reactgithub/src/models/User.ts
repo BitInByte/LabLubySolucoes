@@ -1,5 +1,4 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
-//import axios from "../utils/axios-instance";
 
 export type userAttributes = {
   login: string;
@@ -39,19 +38,14 @@ class User {
   private repos_url?: string;
 
   constructor(username: string) {
-    console.log("Username: ", username);
     this.login = username;
   }
 
   public async getUserByUsername() {
     let response: AxiosResponse<userAttributes>;
-    console.log("Login 2: ", this.login);
 
     try {
-      console.log("Login: ", this.login);
-
       response = await axios.get(`https://api.github.com/users/${this.login}`);
-      console.log("Response: ", response.data);
       this.name = response.data.name;
       this.email = response.data.email;
       this.location = response.data.location;

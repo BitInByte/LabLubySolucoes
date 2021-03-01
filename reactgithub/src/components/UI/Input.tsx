@@ -1,8 +1,9 @@
 // Import libraries
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 // Import components
+
 // Styles
 const InputWrapper = styled.div`
   position: relative;
@@ -22,7 +23,7 @@ const InputElement = styled.input`
 `;
 
 interface IStyledLabel {
-  label?: string | null;
+  shouldShow: boolean;
 }
 
 const LabelElement = styled.label<IStyledLabel>`
@@ -31,16 +32,17 @@ const LabelElement = styled.label<IStyledLabel>`
   right: 0;
   padding-right: 3rem;
   transform: translateY(-50%);
-  opacity: ${(props) => (props.label ? "1" : "0")};
+  opacity: ${(props) => (props.shouldShow ? "1" : "0")};
   transition: all 0.3s ease-in;
   color: ${(props) => props.theme.colors.red};
 `;
 
 // Interface
-interface IProps extends IStyledLabel {
+interface IProps {
   placeholder: string;
   onChangeHandler: (value: string) => void;
   value: string;
+  label?: string | null;
 }
 
 // Component
@@ -50,11 +52,11 @@ const Input: React.FC<IProps> = ({
   value,
   label,
 }) => {
+  const [isTouched, setIsTouched] = useState(false);
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChangeHandler(event.target.value);
+    setIsTouched((prevState) => true);
   };
-
-  console.log("Label: ", label ? true : false);
 
   return (
     <InputWrapper>
@@ -63,7 +65,11 @@ const Input: React.FC<IProps> = ({
         value={value}
         onChange={onChange}
       />
-      <LabelElement label={label}>{label}</LabelElement>
+      <LabelElement
+        shouldShow={label && value.length > 0 && isTouched ? false : true}
+      >
+        {label}
+      </LabelElement>
     </InputWrapper>
   );
 };

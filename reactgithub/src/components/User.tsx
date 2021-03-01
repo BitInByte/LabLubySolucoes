@@ -39,7 +39,6 @@ const NumberRow = styled.div`
 const NumberColumn = styled.button`
   display: flex;
   flex-direction: column;
-  //flex: 1;
   text-align: center;
   padding: 1rem;
   color: inherit;
@@ -85,11 +84,9 @@ const User: React.FC<IProps> = ({
   onActionHandler,
   onGoBackActionHandler,
 }) => {
-  //const user: IUsersState = useSelector((state: IStore) => state.user);
   return (
     <>
       <HeaderPage
-        //title={name.split(" ").join(".")}
         title={`#${login}`}
         $isHome={isHome}
         isUser

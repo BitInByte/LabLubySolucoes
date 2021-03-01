@@ -4,7 +4,7 @@ export type reposAttributes = {
   name: string;
   description: string;
   stargazers_count: number;
-  url: string;
+  html_url: string;
 }[];
 
 class Repo {
@@ -17,7 +17,7 @@ class Repo {
           name: repo.name,
           description: repo.description,
           stargazers_count: repo.stargazers_count,
-          url: repo.url,
+          html_url: repo.html_url,
         };
       });
       return repos;

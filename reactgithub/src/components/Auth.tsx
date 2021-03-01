@@ -20,14 +20,6 @@ const Form = styled.form`
   flex-direction: column;
 `;
 
-//const SpinnerElement = styled(Spinner)`
-//&& {
-//width: 10rem !important;
-//height: 10rem;
-//color: ${(props) => props.theme.colors.yellow};
-//}
-//`;
-
 // Interface
 interface IProps {}
 
@@ -36,7 +28,6 @@ const Auth: React.FC<IProps> = () => {
   const dispatch = useDispatch();
   const [userInput, setUserInput] = useState("");
   const user: IUsersState = useSelector((state: IStore) => state.user);
-  console.log(user);
 
   const onInputChange = (value: string) => {
     setUserInput((_) => value);
